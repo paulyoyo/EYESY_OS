@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# connect ttymidi input to Pd
+aconnect "ttymidi:0" "Pure Data:0"
+# connect Pure Data output to openFrameworks MIDI port
+aconnect "Pure Data:1" "Midi Through:0"
+# check for usb midi device and connect first one found
+python usbmidi.py
+aconnect "Pure Data:1" "Midi Through:0"
